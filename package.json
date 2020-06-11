@@ -4,7 +4,14 @@
   "description": "Workshop about how do we use React",
   "main": "src/App.js",
   "dependencies": {},
-  "devDependencies": {},
-  "scripts": {},
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "prettier": "^2.0.5"
+  },
+  "scripts": {
+    "format": "prettier --write \"src/**/*.{js,jsx}\"",
+    "lint": "eslint \"src/**/*.{js,jsx}\" --quiet"
+  },
   "author": "Gabriel Antiqueira <gmantiqueira@gmail.com>"
 }
