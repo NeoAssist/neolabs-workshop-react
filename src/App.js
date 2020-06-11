@@ -1,6 +1,11 @@
+import React from "react";
+import ReactDOM from "react-dom";
+
+import Cat from "../assets/gato.jpg";
+
 const Wanted = () => {
   return React.createElement("div", { class: "poster" }, [
-    React.createElement("img", { src: "./assets/gato.jpg", alt: "Gato" }),
+    React.createElement("img", { src: Cat, alt: "Gato" }),
     React.createElement("h2", {}, "Gato Bege"),
     React.createElement(
       "h3",
