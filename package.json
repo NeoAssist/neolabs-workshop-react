@@ -1,0 +1,10 @@
+{
+  "name": "workshop-react-neolabs",
+  "version": "1.0.0",
+  "description": "Workshop about how do we use React",
+  "main": "src/App.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {},
+  "author": "Gabriel Antiqueira <gmantiqueira@gmail.com>"
+}
