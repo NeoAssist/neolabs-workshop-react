@@ -56,6 +56,7 @@ ul {
 }
 
 #root .container .poster img {
+  object-fit: cover;
   height: 180px;
   margin: 0 auto;
   width: 180px;
