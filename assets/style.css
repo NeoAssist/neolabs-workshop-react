@@ -50,6 +50,7 @@ ul {
 }
 
 #root .container .poster {
+  background-image: url("./bg-wanted.png");
   display: flex;
   flex-direction: column;
   max-width: 320px;
