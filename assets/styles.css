@@ -1,4 +1,10 @@
+@font-face {
+  font-family: "Bad Gringo";
+  src: url("Bad Gringo.otf");
+}
+
 * {
+  color: #2e2a20;
   margin: 0;
   padding: 0;
   outline: 0;
@@ -14,12 +20,15 @@ body,
 #root {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: auto;
   min-height: 100%;
 }
 
 #root {
-  background: hsl(210, 12%, 16%);
+  background-image: url("./bg-page.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   flex: 1;
 }
 
@@ -38,8 +47,53 @@ a {
   text-decoration: none;
 }
 
+button {
+  cursor: pointer;
+}
+
 ul {
   list-style: none;
+}
+
+#root header {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 64px;
+  padding: 0 128px;
+}
+
+#root header h1 {
+  font-family: "Bad Gringo";
+  font-size: 96px;
+}
+
+#root header h3 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+#root header div {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+#root header div button {
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #93762d;
+  border-radius: 16px;
+  display: flex;
+  font-size: 18px;
+  height: 40px;
+  justify-content: center;
+  width: 240px;
+  transition: all ease 0.2s;
+}
+
+#root header div button:hover {
+  background-color: #93762d;
+  color: #fff;
 }
 
 #root .container {
@@ -53,12 +107,60 @@ ul {
   background-image: url("./bg-wanted.png");
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  margin: 0 16px 48px;
   max-width: 320px;
+  min-height: 420px;
+  padding: 24px 32px;
+  width: 100%;
+}
+
+#root .container .poster .data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 #root .container .poster img {
   object-fit: cover;
   height: 180px;
   margin: 0 auto;
+  margin-bottom: 8px;
   width: 180px;
+}
+
+#root .container .poster h2 {
+  font-family: "Oregano", cursive;
+  font-size: 36px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+#root .container .poster h3 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+section.search {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+/* Styles for input component */
+
+label.use-input-search input {
+  border: 1px solid #93762d;
+  border-radius: 8px;
+  font-size: 24px;
+  font-weight: medium;
+  height: 48px;
+  max-width: 360px;
+  padding: 12px;
+}
+
+label.use-input-search input::placeholder {
+  color: #2e2a20;
+  opacity: 0.5;
 }
