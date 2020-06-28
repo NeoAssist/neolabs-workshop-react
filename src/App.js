@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
 import Wanted from "./components/Wanted";
@@ -9,18 +9,18 @@ import Dog from "../assets/dog.jpg";
 import Parrot from "../assets/bird.jpg";
 
 const App = () => {
-  const [search, CustomInput, setSearch] = useInput('', '')
+  const [search, CustomInput, setSearch] = useInput("Search", "");
 
   return (
     <>
-      <header>
+      <header className="container">
         <h1>Wanted</h1>
         <div>
           <h3>Are you looking for something you lost? Post here!</h3>
           <button>Publish</button>
         </div>
       </header>
-      <CustomInput placeholder="Search"/>
+      <section className="search">{CustomInput}</section>
       <div className="container">
         <Wanted
           image={Cat}
@@ -48,7 +48,7 @@ const App = () => {
         />
       </div>
     </>
-  )
+  );
 };
 
 ReactDOM.render(<App />, document.getElementById("root"));
