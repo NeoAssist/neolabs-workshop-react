@@ -4,8 +4,10 @@
   "description": "Workshop about how do we use React",
   "main": "src/App.js",
   "dependencies": {
+    "history": "^5.0.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
