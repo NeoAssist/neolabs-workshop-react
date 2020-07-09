@@ -7,7 +7,7 @@ import Cat from "../../assets/cat.jpg";
 import Dog from "../../assets/dog.jpg";
 import Parrot from "../../assets/bird.jpg";
 
-const Home = () => {
+const Home = ({history}) => {
   const [search, CustomInput, setSearch] = useInput("Search", "");
 
   return (
@@ -16,7 +16,7 @@ const Home = () => {
         <h1>Wanted</h1>
         <div>
           <h3>Are you looking for something you lost? Post here!</h3>
-          <button>Publish</button>
+          <button onClick={() => history.push('/publish')}>Publish</button>
         </div>
       </header>
       <section className="search">{CustomInput}</section>

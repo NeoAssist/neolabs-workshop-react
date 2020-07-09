@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function InputComponent({ label, state, setState }) {
   const id = `use-input-${label.replace(" ", "").toLowerCase()}`;
@@ -6,6 +6,7 @@ function InputComponent({ label, state, setState }) {
   return (
     <label className={id} htmlFor={id}>
       <input
+        type="text"
         placeholder={label}
         id={id}
         value={state}
