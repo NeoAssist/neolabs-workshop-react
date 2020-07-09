@@ -154,7 +154,7 @@ section.search {
 
 /* Styles for input component */
 
-label.use-input-search input {
+label input[type='text'], label textarea {
   border: 1px solid #93762d;
   border-radius: 8px;
   font-size: 24px;
@@ -164,7 +164,49 @@ label.use-input-search input {
   padding: 12px;
 }
 
-label.use-input-search input::placeholder {
+label input[type='text']::placeholder, label textarea::placeholder {
   color: #2e2a20;
   opacity: 0.5;
+}
+
+/* Styles for publish page */
+
+#root div.publish {
+  flex: 1;
+  justify-content: center;
+  margin-top: 120px;
+  max-height: 400px;
+}
+
+#root div.publish form {
+  display: flex;
+  justify-content: space-between;
+  max-width: 740px;
+  width: 100%;
+}
+
+#root div.publish form label {
+  display: flex;
+  justify-content: center;
+}
+
+#root div.publish form img {
+  cursor: pointer;
+}
+
+#root div.publish form img + input {
+  display: none;
+}
+
+#root div.publish form > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#root div.publish textarea {
+  font-size: 18px;
+  height: 180px;
+  resize: none;
+  width: 360px;
 }
