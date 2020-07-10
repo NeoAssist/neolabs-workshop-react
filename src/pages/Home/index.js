@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 
 import Wanted from "../../components/Wanted";
 import useInput from "../../components/useInput";
@@ -18,7 +18,7 @@ const Home = () => {
         `api/v1/poster/${search ? `title?query=${search}` : ""}`
       );
 
-      setPosters(data);
+      setPosters(data.posters);
     } catch (err) {
       console.log("Internal Server Error");
     }
@@ -26,7 +26,7 @@ const Home = () => {
 
   useEffect(() => {
     getPosters();
-  }, []);
+  }, [search]);
 
   return (
     <>
@@ -40,10 +40,20 @@ const Home = () => {
       <section className="search">{CustomInput}</section>
       <div className="container">
         {posters.map(
-          ({ id, image, title, name, description, telephony, email }) => (
+          ({
+            poster: {
+              id,
+              image_name,
+              title,
+              name,
+              description,
+              telephony,
+              email,
+            },
+          }) => (
             <Wanted
               key={id}
-              image={image}
+              image={`http://localhost:8000/static/${image_name}`}
               title={title}
               owner={name}
               description={description}

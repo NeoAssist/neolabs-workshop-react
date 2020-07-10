@@ -109,13 +109,18 @@ ul {
   padding: 0 128px;
 }
 
+#root > div.container {
+  justify-content: flex-start;
+}
+
 #root .container .poster {
   background-image: url("./bg-wanted.png");
   display: flex;
   flex-direction: column;
+  flex: 1;
   justify-content: space-between;
   margin: 0 16px 48px;
-  max-width: 320px;
+  max-width: 300px;
   min-height: 420px;
   padding: 24px 32px;
   width: 100%;
@@ -197,6 +202,9 @@ label textarea::placeholder {
 
 #root div.publish form img {
   cursor: pointer;
+  height: 180px;
+  object-fit: cover;
+  width: 180px;
 }
 
 #root div.publish form img + input {
