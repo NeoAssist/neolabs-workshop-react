@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import useForm from "../../hooks/useForm";
 import placeholder from "../../assets/placeholder.png";
+
+import api from "../../services/api";
 
 import { useHistory } from "react-router-dom";
 
@@ -9,17 +11,26 @@ const Publish = () => {
   const [file, setFile] = useState();
   const [preview, setPreview] = useState();
 
+  const avatar = useRef();
+
   const history = useHistory();
 
   const [{ values, loading }, handleChange, handleSubmit] = useForm();
 
   async function handleAvatar(e) {
-    // const data = new FormData();
-    // data.append('file', e.target.files[0]);
-    // const response = await api.post('files', data);
-    // const { id, url } = response.data;
-    // setFile(id);
-    // setPreview(url);
+    const data = new FormData();
+    data.append("file", e.target.files[0]);
+
+    await api.post("api/v1/poster/upload", data);
+
+    setFile(e.target.files[0].name);
+    setPreview(`http://localhost:8000/static/${e.target.files[0].name}`);
+  }
+
+  async function createPoster() {
+    let data = { ...values, description, image_name: file };
+    await api.post("api/v1/poster", data);
+    history.push("/");
   }
 
   return (
@@ -37,12 +48,13 @@ const Publish = () => {
         </div>
       </header>
       <div className="container publish">
-        <form>
+        <form onSubmit={() => handleSubmit(createPoster)}>
           <div>
             <label htmlFor="avatar">
               <img src={preview || placeholder} alt="Avatar do usuário" />
 
               <input
+                ref={avatar}
                 type="file"
                 id="avatar"
                 accept="image/*"
@@ -95,6 +107,11 @@ const Publish = () => {
                 placeholder="Owner"
               />
             </label>
+          </div>
+          <div className="submit">
+            <button type="submit">
+              {loading ? "Processing..." : "Publish"}
+            </button>
           </div>
         </form>
       </div>

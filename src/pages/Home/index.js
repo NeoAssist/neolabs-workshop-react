@@ -1,17 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Wanted from "../../components/Wanted";
 import useInput from "../../components/useInput";
 
-import { useHistory } from "react-router-dom";
+import api from "../../services/api";
 
-import Cat from "../../assets/cat.jpg";
-import Dog from "../../assets/dog.jpg";
-import Parrot from "../../assets/bird.jpg";
+import { useHistory } from "react-router-dom";
 
 const Home = () => {
   const history = useHistory();
   const [search, CustomInput, setSearch] = useInput("Search", "");
+  const [posters, setPosters] = useState([]);
+
+  const getPosters = useCallback(async () => {
+    try {
+      const { data } = await api.get(
+        `api/v1/poster/${search ? `title?query=${search}` : ""}`
+      );
+
+      setPosters(data);
+    } catch (err) {
+      console.log("Internal Server Error");
+    }
+  }, [search]);
+
+  useEffect(() => {
+    getPosters();
+  }, []);
 
   return (
     <>
@@ -24,30 +39,19 @@ const Home = () => {
       </header>
       <section className="search">{CustomInput}</section>
       <div className="container">
-        <Wanted
-          image={Cat}
-          title="Gato bege"
-          owner="Gabriel Antiqueira"
-          description="Possui um colarinho azul e tem um leve machucado nas costas. Atende pelo nome de Lucy."
-          tel="14 99862 5506"
-          email="gmantiqueira@gmail.com"
-        />
-        <Wanted
-          image={Dog}
-          title="Cachorro sorridente"
-          owner="Fulano da Silva"
-          description="Nós vivemos numa sociedade em que."
-          tel="14 99862 5506"
-          email="fulano@gmail.com"
-        />
-        <Wanted
-          image={Parrot}
-          title="Papagaio maromba"
-          owner="Léo Stronda"
-          description="Ama fitness."
-          tel="14 99862 5506"
-          email="stronda@gmail.com"
-        />
+        {posters.map(
+          ({ id, image, title, name, description, telephony, email }) => (
+            <Wanted
+              key={id}
+              image={image}
+              title={title}
+              owner={name}
+              description={description}
+              tel={telephony}
+              email={email}
+            />
+          )
+        )}
       </div>
     </>
   );

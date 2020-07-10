@@ -82,7 +82,8 @@ ul {
   flex-direction: column;
 }
 
-#root header div button {
+#root header div button,
+#root form button {
   align-items: center;
   background-color: #fff;
   border: 1px solid #93762d;
@@ -95,7 +96,8 @@ ul {
   transition: all ease 0.2s;
 }
 
-#root header div button:hover {
+#root header div button:hover,
+#root form button:hover {
   background-color: #93762d;
   color: #fff;
 }
@@ -154,7 +156,8 @@ section.search {
 
 /* Styles for input component */
 
-label input[type='text'], label textarea {
+label input[type="text"],
+label textarea {
   border: 1px solid #93762d;
   border-radius: 8px;
   font-size: 24px;
@@ -164,7 +167,8 @@ label input[type='text'], label textarea {
   padding: 12px;
 }
 
-label input[type='text']::placeholder, label textarea::placeholder {
+label input[type="text"]::placeholder,
+label textarea::placeholder {
   color: #2e2a20;
   opacity: 0.5;
 }
@@ -174,12 +178,13 @@ label input[type='text']::placeholder, label textarea::placeholder {
 #root div.publish {
   flex: 1;
   justify-content: center;
-  margin-top: 120px;
-  max-height: 400px;
+  margin-top: 64px;
+  max-height: 480px;
 }
 
 #root div.publish form {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   max-width: 740px;
   width: 100%;
@@ -209,4 +214,13 @@ label input[type='text']::placeholder, label textarea::placeholder {
   height: 180px;
   resize: none;
   width: 360px;
+}
+
+#root div.publish .submit {
+  margin-top: 32px;
+  width: 100%;
+}
+
+#root div.publish .submit button {
+  margin: 0 auto;
 }
