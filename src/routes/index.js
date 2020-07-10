@@ -6,8 +6,8 @@ import Publish from "../pages/Publish";
 export default function Routes() {
   return (
     <Switch>
-      <Route path="/" component={Home} />
-      <Route path="/publish" component={Publish} />
+      <Route path="/" exact component={Home} />
+      <Route path="/publish" exact component={Publish} />
       <Route component={() => <div>404</div>} />
     </Switch>
   );

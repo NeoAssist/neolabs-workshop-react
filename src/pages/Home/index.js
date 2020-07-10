@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import Wanted from "../../components/Wanted";
 import useInput from "../../components/useInput";
 
+import { useHistory } from "react-router-dom";
+
 import Cat from "../../assets/cat.jpg";
 import Dog from "../../assets/dog.jpg";
 import Parrot from "../../assets/bird.jpg";
 
-const Home = ({history}) => {
+const Home = () => {
+  const history = useHistory();
   const [search, CustomInput, setSearch] = useInput("Search", "");
 
   return (
@@ -16,7 +19,7 @@ const Home = ({history}) => {
         <h1>Wanted</h1>
         <div>
           <h3>Are you looking for something you lost? Post here!</h3>
-          <button onClick={() => history.push('/publish')}>Publish</button>
+          <button onClick={() => history.push("/publish")}>Publish</button>
         </div>
       </header>
       <section className="search">{CustomInput}</section>
